@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css"> 
+</head>
+<body>
+    <h1>Add an Employee</h1>
+
+    <div class="w-md">
+        <form method="POST" action="/employees/insert" class="flex flex-col gap-2">
+            <label>Enter a name:</label>
+            <input type="text" name="txtName"  class="input border border-neutral"/>
+            <label>Enter an hourly rate:</label>
+            <input type="text" name="txtHourlyRate"  class="input border border-neutral"/>
+            <div>
+                <label>Is manager?</label>
+                <input type="checkbox" name="cbIsManager" class="checkbox"/>
+            </div>
+            
+            <!-- output the departments in the database -->
+            <select name="selDept" class="select border border-neutral">
+            <% for (let i = 0; i < depts.length; i++) { %>            
+                <option value="<%= depts[i]._id %>">
+                    <%= depts[i].name %>
+                </option>            
+            <% } %>
+            </select>
+            
+
+            <button class="btn btn-primary">Add</button>
+        </form>
+    </div>
+    
+</body>
+</html>
